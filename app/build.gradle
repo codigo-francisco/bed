@@ -20,14 +20,28 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildToolsVersion '28.0.3'
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi-v7a', 'x86', 'x86_64', 'arm64-v8a', 'armeabi'
+            universalApk false
+        }
+    }
+    aaptOptions {
+        noCompress "tflite"
+        noCompress "lite"
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    //implementation fileTree(include: ['*.jar','*.so'], dir: 'libs')
+    implementation project(':OpenCV')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha02'
     implementation 'androidx.core:core-ktx:1.1.0-alpha04'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha02'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
@@ -38,4 +52,6 @@ dependencies {
     implementation 'androidx.viewpager:viewpager:1.0.0'
     implementation 'com.ss.bannerslider:bannerslider:2.0.0'
     implementation 'commons-io:commons-io:2.6'
+    implementation 'org.tensorflow:tensorflow-lite:1.13.1'
+
 }

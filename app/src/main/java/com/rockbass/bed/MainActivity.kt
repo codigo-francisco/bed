@@ -1,5 +1,6 @@
 package com.rockbass.bed
 
+import android.app.AlertDialog
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
+import org.opencv.android.OpenCVLoader
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        verificarOpenCV()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -39,5 +42,15 @@ class MainActivity : AppCompatActivity() {
 
         val tabLayout : TabLayout = findViewById(R.id.tabLayout)
         tabLayout.setupWithViewPager(viewPager)
+    }
+
+    private fun verificarOpenCV(){
+        if (!OpenCVLoader.initDebug()){
+            AlertDialog.Builder(this)
+                .setTitle(R.string.titulo_error_opencv)
+                .setMessage(R.string.mensaje_error_opencv)
+                .setOnDismissListener { android.os.Process.killProcess(android.os.Process.myPid()) }
+                .show()
+        }
     }
 }

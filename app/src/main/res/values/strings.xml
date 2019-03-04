@@ -2,4 +2,6 @@
     <string name="app_name">BEC</string>
     <string name="image_base_de_datos_rafd">Imagen de la base de datos Rafd</string>
     <string name="base_de_datos_rafd">Base de Datos Rafd</string>
+    <string name="titulo_error_opencv">Error al cargar OpenCV</string>
+    <string name="mensaje_error_opencv">Ha ocurrido un error al tratar de cargar la libreria OpenCV, la aplicación se cerrara</string>
 </resources>
