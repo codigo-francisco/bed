@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BEC</string>
+    <string name="app_name">BED - Basic Emotion Detector</string>
     <string name="image_base_de_datos_rafd">Imagen de la base de datos Rafd</string>
     <string name="base_de_datos_rafd">Base de Datos Rafd</string>
     <string name="titulo_error_opencv">Error al cargar OpenCV</string>

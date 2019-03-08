@@ -23,25 +23,34 @@ class HandleImage private constructor(private val context: Context) : ImageLoadi
     }
 
     private val openCV = OpenCV.getOpenCV(context)
-    lateinit var ultimoResultado : OpenCV.ResultDetectEmotion
-    private lateinit var callbackChangeResult : (result : OpenCV.ResultDetectEmotion) -> Unit
+    private lateinit var callbackChangeResult : (result :Pair<Boolean, OpenCV.CalificacionEmociones>, index : Int) -> Unit
+    val results : Array<Pair<Boolean, OpenCV.CalificacionEmociones>> = Array(6) {Pair(false,
+        OpenCV.CalificacionEmociones(0f,0f,0f,0f,0f,0f,0f))}
 
+    fun getResult(index: Int) : Pair<Boolean, OpenCV.CalificacionEmociones> {
+        return results[index]
+    }
 
-    fun onChangeResult(callback : (result : OpenCV.ResultDetectEmotion) -> Unit){
+    fun onChangeResult(callback : (result : Pair<Boolean, OpenCV.CalificacionEmociones>, index : Int) -> Unit){
         callbackChangeResult = callback
     }
 
     override fun loadImage(url: String?, imageView: ImageView?) {
         //No es una url, es una cadena para los recursos
-        val inputStream = context.assets?.open("rafd_images/$url")
+        //Se extra el indice
+        val index = url!!.last().toString().toInt()
+        val realUrl = url.removeRange(url.lastIndex,url.lastIndex+1)
+        val inputStream = context.assets?.open("rafd_images/$realUrl")
         val bitMap = BitmapFactory.decodeStream(inputStream)
 
-        ultimoResultado = openCV.markFaceAndDetectEmotion(bitMap)
+        val ultimoResultado = openCV.markFaceAndDetectEmotion(bitMap)
 
-        this@HandleImage.callbackChangeResult(ultimoResultado)
+        results[index] = Pair(ultimoResultado.rostroEncontrado, ultimoResultado.calificacionEmociones)
+
+        callbackChangeResult(results[index], index)
 
         imageView?.setImageBitmap(ultimoResultado.image)
-        imageView?.contentDescription = url
+        //imageView?.contentDescription = url
     }
 
     override fun loadImage(resource: Int, imageView: ImageView?) {

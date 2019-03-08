@@ -12,6 +12,7 @@ import androidx.core.text.bold
 import kotlinx.android.synthetic.main.rafd_view_fragment.*
 import ss.com.bannerslider.Slider
 import ss.com.bannerslider.adapters.SliderAdapter
+import ss.com.bannerslider.event.OnSlideChangeListener
 import ss.com.bannerslider.viewholder.ImageSlideViewHolder
 
 
@@ -34,7 +35,7 @@ class RafdViewFragment : Fragment() {
         }
 
         override fun onBindImageSlide(position: Int, imageSlideViewHolder: ImageSlideViewHolder?) {
-            imageSlideViewHolder?.bindImageSlide(imagenes[position])
+            imageSlideViewHolder?.bindImageSlide("${imagenes[position]}$position")
         }
 
     }
@@ -47,24 +48,37 @@ class RafdViewFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val view : View = inflater.inflate(R.layout.rafd_view_fragment, container, false)
 
-        HandleImage.getHandleImage(context as Context).onChangeResult { result ->
-            //Rostro detectado
-            if (result.rostroEncontrado){
-                with(result.calificacionEmociones){
-                    textEnojado.text = enojado.toPercentage()
-                    textFeliz.text = feliz.toPercentage()
-                    textMiedo.text = miedo.toPercentage()
-                    textNeutral.text = neutral.toPercentage()
-                    textSorpresa.text = sorpresa.toPercentage()
-                    textTriste.text = triste.toPercentage()
+        val slider : Slider = view.findViewById(R.id.sliderView)
+        slider.setAdapter(MainSliderAdapter())
+        slider.onSlideChangeListener = object : OnSlideChangeListener{
+            override fun onSlideChange(position: Int) {
+                //Traer resultados
+                val results = HandleImage.getHandleImage(context as Context).results[position]
+                colocarTextos(results.second)
+            }
+        }
+
+        HandleImage.getHandleImage(context as Context).onChangeResult { result,index ->
+            if (slider.selectedSlidePosition==index) {
+                //Rostro detectado
+                if (result.first) {
+                    colocarTextos(result.second)
                 }
             }
         }
 
-        val slider : Slider = view.findViewById(R.id.sliderView)
-        slider.setAdapter(MainSliderAdapter())
-
         return view
+    }
+
+    fun colocarTextos(calificaciones : OpenCV.CalificacionEmociones){
+        with(calificaciones) {
+            textEnojado.text = enojado.toPercentage()
+            textFeliz.text = feliz.toPercentage()
+            textMiedo.text = miedo.toPercentage()
+            textNeutral.text = neutral.toPercentage()
+            textSorpresa.text = sorpresa.toPercentage()
+            textTriste.text = triste.toPercentage()
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
