@@ -5,96 +5,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".RafdViewFragment">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
         <ss.com.bannerslider.Slider
                 app:slider_loopSlides="false"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:id="@+id/sliderView"
                 android:contentDescription="@string/image_base_de_datos_rafd"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/labelEnojado">
+                android:layout_above="@id/layout_textos"
+                >
         </ss.com.bannerslider.Slider>
-        <TextView
-                android:text="Enojado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/labelEnojado"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/labelNeutral"/>
-        <TextView
-                android:text="Feliz"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/labelFeliz"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/labelSorpresa"
-                app:layout_constraintStart_toEndOf="@+id/textNeutral" android:layout_marginStart="16dp"/>
-        <TextView
-                android:text="Miedo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/labelMiedo"
-                app:layout_constraintStart_toEndOf="@+id/textSorpresa"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/textSorpresa"/>
-        <TextView
-                android:layout_height="wrap_content" android:id="@+id/textEnojado"
-                android:layout_width="50dp"
-                app:layout_constraintStart_toEndOf="@+id/labelEnojado" android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/labelSorpresa"/>
-        <TextView
-                android:layout_height="wrap_content" android:id="@+id/textFeliz"
-                android:layout_width="50dp"
-                app:layout_constraintStart_toEndOf="@+id/labelFeliz"
-                android:layout_marginStart="36dp" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/labelSorpresa"/>
-        <TextView
-                android:layout_height="wrap_content" android:id="@+id/textMiedo"
-                android:layout_width="50dp"
-                app:layout_constraintStart_toEndOf="@+id/labelMiedo"
-                android:layout_marginStart="16dp" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/textTriste"/>
-        <TextView
-                android:text="Neutral"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/labelNeutral"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-        <TextView
-                android:text="Sorpresa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/labelSorpresa"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="8dp" app:layout_constraintStart_toEndOf="@+id/textNeutral"
-                android:layout_marginStart="16dp"/>
-        <TextView
-                android:text="Triste"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/labeTriste"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="8dp" app:layout_constraintStart_toEndOf="@+id/textSorpresa"
-                android:layout_marginStart="16dp"/>
-        <TextView
-                android:layout_height="wrap_content" android:id="@+id/textNeutral"
-                android:layout_width="50dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="8dp" app:layout_constraintStart_toEndOf="@+id/labelNeutral"
-                android:layout_marginStart="8dp"/>
-        <TextView
-                android:layout_height="wrap_content" android:id="@+id/textSorpresa"
-                android:layout_width="50dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="8dp" app:layout_constraintStart_toEndOf="@+id/labelSorpresa"
-                android:layout_marginStart="8dp"/>
-        <TextView
-                android:layout_height="wrap_content" android:id="@+id/textTriste"
-                android:layout_width="50dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="8dp" app:layout_constraintStart_toEndOf="@+id/labelMiedo"
-                android:layout_marginStart="16dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <include layout="@layout/texts_results_layout"/>
+    </RelativeLayout>
 </FrameLayout>

@@ -7,14 +7,23 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'main'
+            keyPassword 'Rock2560'
+            storeFile file('C:/Users/Rock/Dropbox/bed2.jks')
+            storePassword 'rock5210'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.rockbass.bed"
+        applicationId "com.rockbass.bed2"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1
-        versionName "0.0.1"
+        versionCode 2
+        versionName "0.0.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.config
     }
     buildTypes {
         release {
@@ -23,8 +32,8 @@ android {
         }
     }
     buildToolsVersion '28.0.3'
-    bundle{
-        density{
+    bundle {
+        density {
             enableSplit true
         }
         abi {
@@ -43,8 +52,7 @@ android {
         }
     }
     // Map for the version code that gives each ABI a value.
-    def abiCodes = ['x86':1, 'x86_64':2, 'armeabi-v7a':3, 'arm64-v8a':4, 'armeabi':5]
-
+    def abiCodes = ['x86': 1, 'x86_64': 2, 'armeabi-v7a': 3, 'arm64-v8a': 4, 'armeabi': 5]
     // APKs for the same app that all have the same version information.
     android.applicationVariants.all { variant ->
         // Assigns a different version code for each output APK.
@@ -58,6 +66,8 @@ android {
         noCompress "tflite"
         noCompress "lite"
     }
+    productFlavors {
+    }
 }
 
 dependencies {
@@ -66,7 +76,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha02'
     implementation 'androidx.core:core-ktx:1.1.0-alpha04'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha02'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
@@ -78,5 +87,4 @@ dependencies {
     implementation 'com.ss.bannerslider:bannerslider:2.0.0'
     implementation 'commons-io:commons-io:2.6'
     implementation 'org.tensorflow:tensorflow-lite:1.13.1'
-
 }

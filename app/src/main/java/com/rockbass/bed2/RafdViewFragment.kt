@@ -1,30 +1,36 @@
-package com.rockbass.bed
+package com.rockbass.bed2
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.text.SpannableStringBuilder
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.text.bold
-import kotlinx.android.synthetic.main.rafd_view_fragment.*
+import android.widget.TextView
 import ss.com.bannerslider.Slider
 import ss.com.bannerslider.adapters.SliderAdapter
 import ss.com.bannerslider.event.OnSlideChangeListener
 import ss.com.bannerslider.viewholder.ImageSlideViewHolder
 
+//Extensión para imprimir porcentajes en los valores
+fun Float.toPercentage() : String{
+    return "%.2f".format(this)
+}
 
 class RafdViewFragment : Fragment() {
 
-    private val TAG : String = RafdViewFragment::javaClass.name
-
-    private lateinit var rafdViewModel: RafdViewModel
+    private val TAG : String = "RafdViewFragment"
 
     private lateinit var openCV : OpenCV
 
     private val ROOT_FOLDER_RAFD = "rafd_images"
+
+    private lateinit var textEnojado : TextView
+    private lateinit var textMiedo : TextView
+    private lateinit var textNeutral : TextView
+    private lateinit var textSorpresa : TextView
+    private lateinit var textTriste : TextView
+    private lateinit var textFeliz : TextView
 
     inner class MainSliderAdapter : SliderAdapter(){
 
@@ -40,13 +46,16 @@ class RafdViewFragment : Fragment() {
 
     }
 
-    //Extensión para imprimir porcentajes en los valores
-    fun Float.toPercentage() : String{
-       return "%.2f".format(this)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val view : View = inflater.inflate(R.layout.rafd_view_fragment, container, false)
+
+        textEnojado = view.findViewById(R.id.textEnojado)
+        textFeliz = view.findViewById(R.id.textFeliz)
+        textMiedo = view.findViewById(R.id.textMiedo)
+        textNeutral = view.findViewById(R.id.textNeutral)
+        textSorpresa = view.findViewById(R.id.textSorpresa)
+        textTriste = view.findViewById(R.id.textTriste)
+
 
         val slider : Slider = view.findViewById(R.id.sliderView)
         slider.setAdapter(MainSliderAdapter())
@@ -79,13 +88,6 @@ class RafdViewFragment : Fragment() {
             textSorpresa.text = sorpresa.toPercentage()
             textTriste.text = triste.toPercentage()
         }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        rafdViewModel = ViewModelProviders.of(this).get(RafdViewModel::class.java)
-        // TODO: Use the ViewModel
-
     }
 
 }

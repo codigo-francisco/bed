@@ -1,4 +1,4 @@
-package com.rockbass.bed
+package com.rockbass.bed2
 
 import android.app.AlertDialog
 import android.content.Context
@@ -13,12 +13,13 @@ import org.opencv.android.OpenCVLoader
 class MainActivity : AppCompatActivity() {
 
     inner class PageAdapter(context: Context) : FragmentPagerAdapter(this.supportFragmentManager){
-        private val names : List<String> = listOf(context.getString(R.string.base_de_datos_rafd))
+        private val names : List<String> = listOf(*context.resources.getStringArray(R.array.menu))
 
         override fun getItem(position: Int): Fragment {
             return when(position){
+                0 -> FotografiaFragment()
                 1 -> RafdViewFragment()
-                else -> RafdViewFragment()
+                else -> FotografiaFragment()
             }
         }
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".FotografiaFragment">
+
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+                   android:background="@android:drawable/screen_background_light_transparent"
+            android:id="@+id/fotografia_imageview"  android:layout_above="@id/label_resultados_fotografia"
+        />
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/layout_textos"
+                android:gravity="center_horizontal"
+                android:id="@+id/label_resultados_fotografia"
+                android:text="@string/resultados"/>
+        <include layout="@layout/texts_results_layout"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_above="@id/button_seleccionar_imagen" />
+        <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="@string/seleccionar_image" android:layout_alignParentBottom="true"
+                android:drawableTop="@android:drawable/ic_menu_gallery"
+                android:id="@+id/button_seleccionar_imagen" />
+
+    </RelativeLayout>
+
+</FrameLayout>

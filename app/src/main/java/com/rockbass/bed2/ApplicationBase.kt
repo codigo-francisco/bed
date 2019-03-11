@@ -1,4 +1,4 @@
-package com.rockbass.bed
+package com.rockbass.bed2
 
 import android.app.Application
 import org.opencv.android.OpenCVLoader

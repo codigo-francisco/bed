@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" android:gravity="center"
+        android:theme="@style/EmotionLabels"
+        android:id="@+id/layout_textos">
+    <TextView
+            android:text="@string/enojado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/labelEnojado"
+            android:layout_alignParentStart="true"
+    />
+    <TextView
+            android:layout_width="wrap_content" android:layout_toEndOf="@id/labelEnojado"
+            android:layout_height="wrap_content" android:id="@+id/textEnojado"
+            android:minWidth="50dp"/>
+    <TextView
+            android:text="@string/feliz"
+            android:layout_width="wrap_content" android:minWidth="50dp"
+            android:layout_height="wrap_content" android:id="@+id/labelFeliz"
+            android:layout_toEndOf="@id/textEnojado"/>
+    <TextView
+            android:layout_height="wrap_content" android:id="@+id/textFeliz"
+            android:layout_width="wrap_content" android:minWidth="50dp"
+            android:layout_toEndOf="@id/labelFeliz"/>
+    <TextView
+            android:text="@string/miedo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/labelMiedo"
+            android:layout_toEndOf="@id/textFeliz"/>
+    <TextView
+            android:layout_height="wrap_content" android:id="@+id/textMiedo"
+            android:layout_width="wrap_content" android:minWidth="50dp"
+            android:layout_toEndOf="@id/labelMiedo"/>
+    <TextView
+            android:text="@string/neutral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/labelNeutral"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/labelEnojado"/>
+    <TextView
+            android:layout_height="wrap_content" android:id="@+id/textNeutral"
+            android:layout_width="wrap_content" android:minWidth="50dp"
+            android:layout_toEndOf="@id/labelNeutral"
+            android:layout_below="@id/textEnojado" />
+    <TextView
+            android:text="@string/sorpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/labelSorpresa"
+            android:layout_toEndOf="@id/textNeutral"
+            android:layout_below="@id/textMiedo"/>
+    <TextView
+            android:layout_height="wrap_content" android:id="@+id/textSorpresa"
+            android:layout_width="wrap_content" android:layout_toEndOf="@id/labelSorpresa"
+            android:layout_below="@id/textMiedo" android:minWidth="50dp"
+    />
+    <TextView
+            android:text="@string/triste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/labeTriste"
+            android:layout_toEndOf="@id/textSorpresa"
+            android:layout_below="@id/labelMiedo"/>
+    <TextView
+            android:layout_height="wrap_content" android:id="@+id/textTriste"
+            android:layout_width="wrap_content" android:minWidth="50dp"
+            android:layout_toEndOf="@id/labeTriste"
+            android:layout_below="@id/textMiedo"/>
+</RelativeLayout>

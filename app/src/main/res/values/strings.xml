@@ -1,7 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BED - Basic Emotion Detector</string>
     <string name="image_base_de_datos_rafd">Imagen de la base de datos Rafd</string>
-    <string name="base_de_datos_rafd">Base de Datos Rafd</string>
     <string name="titulo_error_opencv">Error al cargar OpenCV</string>
-    <string name="mensaje_error_opencv">Ha ocurrido un error al tratar de cargar la libreria OpenCV, la aplicación se cerrara</string>
+    <string name="mensaje_error_opencv">Ha ocurrido un error al tratar de cargar la libreria OpenCV, la aplicación se
+        cerrara
+    </string>
+
+    <string-array name="menu">
+        <item name="seleccionar_fotografia">Seleccione una fotografía</item>
+        <item name="base_de_datos_rafd">Base de Datos Rafd</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="seleccionar_image">Selecciona una imagen</string>
+    <string name="resultados">Resultados</string>
+    <string name="enojado">Enojado</string>
+    <string name="feliz">Feliz</string>
+    <string name="miedo">Miedo</string>
+    <string name="neutral">Neutral</string>
+    <string name="sorpresa">Sorpresa</string>
+    <string name="triste">Triste</string>
 </resources>

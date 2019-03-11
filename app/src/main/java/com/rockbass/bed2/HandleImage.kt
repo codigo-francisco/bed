@@ -1,4 +1,4 @@
-package com.rockbass.bed
+package com.rockbass.bed2
 
 import android.content.Context
 import android.graphics.BitmapFactory

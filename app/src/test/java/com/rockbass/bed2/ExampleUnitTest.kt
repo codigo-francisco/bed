@@ -1,4 +1,4 @@
-package com.rockbass.bed
+package com.rockbass.bed2
 
 import org.junit.Test
 
